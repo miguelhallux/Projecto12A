@@ -18,8 +18,6 @@ CREATE TABLE utilizadores(
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
-
--- Criação da tabela 'generos'
 CREATE TABLE generos(
     cod int(11) not null,           
     genero varchar(20) not null,   
@@ -27,7 +25,6 @@ CREATE TABLE generos(
 ) ENGINE=INNODB DEFAULT charset=utf8;              
 
 
--- Criação da tabela 'produtoras'
 CREATE TABLE produtoras(
     cod int(11) not null,           
     produtora varchar(20) not null, 
@@ -35,7 +32,7 @@ CREATE TABLE produtoras(
     PRIMARY KEY(cod)                
 ) ENGINE=INNODB DEFAULT charset=utf8;               
 
--- Criação da tabela 'jogos'
+
 CREATE TABLE jogos(
     cod int(11) not null,              
     nome varchar(40) not null,        
