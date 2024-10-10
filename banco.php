@@ -54,7 +54,7 @@ $banco->set_charset("utf8");
         exibirSucesso("Conexão estabelecida com sucesso ao banco de dados 'db_games'!");
 
 
-        $search = $banco->query("SELECT * FROM jogos");
+        $search = $banco->query("    ");
         if(!$search){
 
             echo ("Falha na busca");
