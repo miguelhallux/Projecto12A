@@ -61,9 +61,9 @@ $banco->set_charset("utf8");
         }
         else{
         $registo = $search->fetch_object();//O método fetch_object() vai buscar apenas uma linha de resultado da sua consulta e, a cada chamada subsequente, ele vai buscar a próxima linha disponível.
-       echo $registo->nome; //echo vai buscar para exibir propriedades específicas (colunas) do objeto retornado da consulta.
+       //echo $registo->nome; //echo vai buscar para exibir propriedades específicas (colunas) do objeto retornado da consulta.
        //while ($registo!= false){
-        //print_r($registo = $search->fetch_object());
+        print_r($registo = $search->fetch_object());
 
        //}
 
