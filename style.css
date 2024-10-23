@@ -1,42 +1,104 @@
-body{
-background-color: #ddd;/* Define a cor de fundo do body como cinza (#ddd) */
-font-family: Tahoma;/* Define a fonte do texto para Tahoma */
+body {
+    background-color: #ddd; /* Define a cor de fundo do corpo da página */
+    font-family: tahoma; /* Define a fonte padrão para o texto */
+}
+
+main {
+    width: 800px; /* Define a largura do conteúdo principal */
+    margin: auto; /* Centraliza o conteúdo principal horizontalmente */
+    padding: 20px; /* Adiciona espaçamento interno de 20px ao redor do conteúdo */
+    background-color: #fff; /* Define o fundo branco para o conteúdo principal */
+    box-shadow: 0px 0px 30px #777; /* Adiciona sombra ao redor do conteúdo principal */
+}
+
+table.listagem {
+    width: 100%; /* Faz com que a tabela ocupe 100% da largura disponível */
+    text-align: left; /* Alinha o texto das células à esquerda */
+}
+
+table.listagem tr {
+    height: 50px; /* Define a altura de cada linha da tabela */
+}
+
+table.listagem td {
+    border: 1px solid #ddd; /* Adiciona bordas em torno das células */
+    padding: 10px; /* Adiciona espaçamento interno de 10px nas células */
+}
+
+table.listagem tr:nth-child(even) {
+    background-color: #f2f2f2; /* Adiciona uma cor de fundo alternada em linhas pares */
+}
+
+table.listagem td:nth-child(1) {
+    width: 50px; /* Define a largura da primeira coluna da tabela */
+}
+
+table.listagem td:nth-child(3) {
+    width: 90px; /* Define a largura da terceira coluna da tabela */
+}
+
+table.detalhes{
+    width: 100%;
+
 
 }
 
-div#corpo{
-    width: 800px; /* Define a largura da div "corpo" como 800px */
-    margin: auto; /* Centraliza a div horizontalmente na página */
-    padding: 20px; /* Adiciona um espaçamento interno de 20px dentro da div */
-    background-color: #fff; /* Define o fundo da div "corpo" como branco (#fff) */
-    box-shadow: 0px 0px 30px #777; /* Aplica uma sombra suave à div (0px deslocamento, 30px de raio) */
+table.detalhes td{
+    padding: 10px;
+    vertical-align: top;
+}
 
+img.mini{
+
+    width: 100px;
+}
+img.full{
+
+    width: 300px;
+}
+
+footer {
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 10px;
 
 }
 
-table.listagem{
-    width: 100%; /* Define a tabela para ocupar 100% da largura da div */
-    text-align: left; /* Alinha o conteúdo das células da tabela à esquerda */
-    border-collapse: collapse; /* Remove o espaçamento entre as bordas da tabela */
+header{
+
+    text-align: right;
+    font-size: 10px;
+}
+
+form#busca{
+font-size: 11px;
+text-align: right;
 }
 
 
-table.listagem tr{
-    height: 50px; /* Define a altura de cada linha da tabela como 50px */
+div.sucesso{
+padding: 7px 15px;
+margin-bottom: 15px;
+border-radius: 15px;
+background-color: rgb(226, 239, 218);
+color: rgb(46, 73, 36);
+
 }
 
-table.listagem td{
-    border: 1px solid #ddd; /* Aplica uma borda de 1px com cor #ddd (cinza claro) ao redor de cada célula */
-    padding: 10px; /* Adiciona 10px de espaçamento interno (padding) dentro de cada célula */
-}
-table.listagem tr:nth-child(even){
-    background-color: #f2f2f2; /* Define o fundo das linhas pares da tabela como cinza claro (#f2f2f2) */
+div.aviso{
+    padding: 7px 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: rgb(251, 248, 229);
+    color: rgb(134, 110, 66);
+
 }
 
-table.listagem td:nth-child(1){
-    width: 50px; /* Define a largura da primeira coluna da tabela como 50px */
-}
+div.erro{
 
-table.listagem td:nth-child(3){
-    width: 90px; /* Define a largura da primeira coluna da tabela como 50px */
+    padding: 7px 15px;
+margin-bottom: 15px;
+border-radius: 15px;
+background-color: rgb(239, 223, 222);
+color: rgb(157, 75, 69);
 }
