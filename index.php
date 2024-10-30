@@ -6,7 +6,32 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Biblioteca de Jogos</title>  <!--Define a fonte do texto para Tahoma */ -->
 </head>
+<?php 
+/**
+ * Função para determinar o caminho correto da capa de um jogo.
+ *
+ * Esta função verifica se o arquivo de capa especificado existe no servidor.
+ * Se o arquivo não existir ou se o parâmetro fornecido for nulo ou vazio,
+ * a função retorna um caminho para uma imagem de capa indisponível padrão.
+ */
+function thumbnail ($nomeArquivo){
+// Define o diretório base onde as capas são armazenadas.
+$caminho = "capas/$nomeArquivo";
 
+// Verifica se o nome do arquivo é nulo ou se o arquivo não existe no diretório.
+if (is_null($nomeArquivo) || !file_exists($caminho)){
+return "capas/indisponivel.png";
+}
+else{
+
+// Retorna o caminho completo para o arquivo da capa se ele existir
+return $caminho;
+
+}
+}
+
+
+?>
 
 <body>
 
@@ -67,7 +92,10 @@
              {
                  while($registro = $search->fetch_object()) //Este loop itera sobre cada linha de resultado da consulta. O método fetch_object() retorna a próxima linha do resultado como um objeto, onde cada coluna da linha pode ser acessada como uma propriedade do objeto.
                  {
-                 echo "<tr><td>$registro->capa</td>";  //Exibe a coluna capa na tabela HTML. Em que a capa seja um campo na tabela do banco de dados que está sendo acessada.
+                 
+                   $caminhoCapa = thumbnail($registro->capa);
+
+                 echo "<td><img src='$caminhoCapa'class= mini></td>";  //Exibe a coluna capa na tabela HTML. Em que a capa seja um campo na tabela do banco de dados que está sendo acessada.
                  echo "<td>$registro->nome</td>"; //Exibe a coluna nome.
                  echo "<td>Admin</td></tr>"; //Adiciona uma coluna estática com o texto "Admin". Isto pode ser um placeholder para futuras implementações, como links para ações administrativas relacionadas a cada registro.
                  }
