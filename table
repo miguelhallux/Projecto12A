@@ -1,0 +1,13 @@
+ echo "<tr>"; // Início da linha para a capa do jogo e nome
+            echo "<td rowspan='3'><capa do jogo></td>"; // Coluna com a imagem da capa que se estende por três linhas
+            echo "<td><h2>$registo->nome</h2></td>"; // Coluna com o nome do jogo
+            echo "</tr>"; // Fim da primeira linha
+            
+            echo "<tr>"; // Início da segunda linha para a descrição
+            echo "<td>$registo->descricao</td>"; // Coluna com a descrição do jogo
+            echo "</tr>"; // Fim da segunda linha
+            
+            echo "<tr>"; // Início da terceira linha para administração
+            echo "<td>admin</td>"; // Coluna com opções administrativas
+            echo "</tr>"; // Fim da terceira linha
+            
