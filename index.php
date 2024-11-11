@@ -18,7 +18,7 @@ function thumbnail ($nomeArquivo){
 // Define o diretório base onde as capas são armazenadas.
 $caminho = "capas/$nomeArquivo";
 
-// Verifica se o nome do arquivo é nulo ou se o arquivo não existe no diretório.
+// Verifica se o nome do arquivo é nulo ou se o arquivo não existe no diretório
 if (is_null($nomeArquivo) || !file_exists($caminho)){
 return "capas/indisponivel.png";
 }
@@ -96,7 +96,7 @@ return $caminho;
                    $caminhoCapa = thumbnail($registro->capa);
 
                  echo "<td><img src='$caminhoCapa'class= mini></td>";  //Exibe a coluna capa na tabela HTML. Em que a capa seja um campo na tabela do banco de dados que está sendo acessada.
-                 echo "<td>$registro->nome</td>"; //Exibe a coluna nome.
+                 echo "<td><a href='detalhes.php?cod=$registro->cod'>$registro->nome</td></a>"; //Exibe a coluna nome.
                  echo "<td>Admin</td></tr>"; //Adiciona uma coluna estática com o texto "Admin". Isto pode ser um placeholder para futuras implementações, como links para ações administrativas relacionadas a cada registro.
                  }
              }
