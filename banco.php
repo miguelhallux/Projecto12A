@@ -1,15 +1,5 @@
-<pre>
+
 <?php
-
-//Para garantir que os erros sejam visíveis durante o desenvolvimento, siga estas etapas:
-//Habilitar a Exibição de Erros no PHP
-//É possível que a exibição de erros esteja desabilitada no seu servidor ou no ambiente PHP. 
-//Para ativar a exibição de erros, adicione o seguinte código no início do seu scrip
-
-// Habilitar exibição de erros (apenas durante o desenvolvimento)
-ini_set('display_errors', 1); //garantem que os erros sejam exibidos durante o desenvolvimento.
-ini_set('display_startup_er!rors', 1);  //garantem que os erros sejam exibidos durante o desenvolvimento.
-error_reporting(E_ALL); //ativa todos os níveis de erro.
 
 
 // Função para apresentar erros de forma estilizada
@@ -31,7 +21,7 @@ function exibirSucesso($mensagem) {
 
 try {
     // Estabelece a conexão com o banco de dados MySQL
-    $banco = new mysqli('localhost', 'root', '', 'db_games'); // Conecta ao MySQL (localhost, usuário 'root', sem senha, banco de dados 'db_games')
+    $banco = new mysqli('localhost', 'root', '', 'db_games2'); // Conecta ao MySQL (localhost, usuário 'root', sem senha, banco de dados 'db_games')
     //$banco = new mysqli('localhost', 'i35344', 'i35344', 'i35344_db_games'); // Conecta ao MySQL (localhost, usuário 'root', sem senha, banco de dados 'db_games')
     
 
@@ -54,16 +44,29 @@ $banco->set_charset("utf8");
         exibirSucesso("Conexão estabelecida com sucesso ao banco de dados 'db_games'!");
 
 
-        $search = $banco->query("    ");
+       // $search = $banco->query("SELECT * FROM jogos");
+
+    /* $banco: Este é um objeto que representa a conexão com o banco de dados. Geralmente, é criado usando uma classe como PDO ou mysqli.
+
+    query(): Este método é chamado no objeto $banco e é responsável por executar a consulta SQL fornecida. O resultado da consulta é armazenado na variável $search.
+
+    "SELECT * FROM jogos": Esta é a instrução SQL.
+
+    SELECT *: O asterisco (*) indica que queremos selecionar todas as colunas de cada registro.
+    FROM jogos: Indica que queremos os dados da tabela jogos. */
+
         if(!$search){
 
-            echo ("Falha na busca");
+            //echo ("Falha na busca");
         }
         else{
-        $registo = $search->fetch_object();//O método fetch_object() vai buscar apenas uma linha de resultado da sua consulta e, a cada chamada subsequente, ele vai buscar a próxima linha disponível.
+        //$registo = $search->fetch_object();//O método fetch_object() vai buscar apenas uma linha de resultado da sua consulta e, a cada chamada subsequente, ele vai buscar a próxima linha disponível.
+
+        
        //echo $registo->nome; //echo vai buscar para exibir propriedades específicas (colunas) do objeto retornado da consulta.
+       
        //while ($registo!= false){
-        print_r($registo = $search->fetch_object());
+        //print_r($registo = $search->fetch_object());
 
        //}
 
@@ -99,22 +102,10 @@ $banco->set_charset("utf8");
 }
 
 
-// Fechar a conexão ao final
-if (isset($banco)) {
-    $banco->close();
-}
 ?>
 
 
-<!-- 
-//exemplo para explicar o try catch com captura da excepçao e mostra
-try {
-    // Tentativa de dividir por zero, o que lançará uma exceção
-    $resultado = 10 / 0;
-} catch (Exception $e) {
-    // Exibe a mensagem da exceção capturada
-    echo "Erro: " . $e->getMessage();
-} -->
+
 
 
 
