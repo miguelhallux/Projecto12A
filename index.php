@@ -6,38 +6,15 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Biblioteca de Jogos</title>  <!--Define a fonte do texto para Tahoma */ -->
 </head>
-<?php 
-/**
- * Função para determinar o caminho correto da capa de um jogo.
- *
- * Esta função verifica se o arquivo de capa especificado existe no servidor.
- * Se o arquivo não existir ou se o parâmetro fornecido for nulo ou vazio,
- * a função retorna um caminho para uma imagem de capa indisponível padrão.
- */
-function thumbnail ($nomeArquivo){
-// Define o diretório base onde as capas são armazenadas.
-$caminho = "capas/$nomeArquivo";
 
-// Verifica se o nome do arquivo é nulo ou se o arquivo não existe no diretório
-if (is_null($nomeArquivo) || !file_exists($caminho)){
-return "capas/indisponivel.png";
-}
-else{
-
-// Retorna o caminho completo para o arquivo da capa se ele existir
-return $caminho;
-
-}
-}
-
-
-?>
 
 <body>
 
 
    <?php 
-   require_once "includes/banco.php"
+   require_once "includes/banco.php";
+   require_once "includes/function.php"
+
    
    //includes/banco.php -> Especifica o caminho do arquivo a ser incluído. Normalmente, a pasta includes é usada para armazenar arquivos de script que são usados frequentemente por outros scripts no aplicativo, como conexões de banco de dados, configurações globais, funções úteis, etc. 
    
@@ -62,8 +39,8 @@ return $caminho;
     <table class="listagem">
     
     <?php 
-       
-       $search = $banco->query("SELECT * FROM jogos ");
+       $query_join = "SELECT jogos.cod, jogos.nome, jogos.descricao, jogos.pontuacao, jogos.capa, generos.genero from jogos JOIN generos on jogos.cod_genero = generos.cod;";
+       $search = $banco->query($query_join);
       
      // $banco->query("SELECT * FROM jogos ") -> Esta linha é responsável por executar uma consulta SQL no banco de dados através do objeto $banco, que é uma instância da classe mysqli, uma das maneiras mais comuns de interagir com bancos de dados MySQL em PHP. 
          
@@ -93,10 +70,11 @@ return $caminho;
                  while($registro = $search->fetch_object()) //Este loop itera sobre cada linha de resultado da consulta. O método fetch_object() retorna a próxima linha do resultado como um objeto, onde cada coluna da linha pode ser acessada como uma propriedade do objeto.
                  {
                  
-                   $caminhoCapa = thumbnail($registro->capa);
+                   $caminhoCapa = thumb($registro->capa);
 
                  echo "<td><img src='$caminhoCapa'class= mini></td>";  //Exibe a coluna capa na tabela HTML. Em que a capa seja um campo na tabela do banco de dados que está sendo acessada.
-                 echo "<td><a href='detalhes.php?cod=$registro->cod'>$registro->nome</td></a>"; //Exibe a coluna nome.
+                 echo "<td><a href='detalhes.php?cod=$registro->cod'>$registro->nome</a>"; //Exibe a coluna nome.
+                 echo "[$registro->genero]</td>";
                  echo "<td>Admin</td></tr>"; //Adiciona uma coluna estática com o texto "Admin". Isto pode ser um placeholder para futuras implementações, como links para ações administrativas relacionadas a cada registro.
                  }
              }
@@ -112,7 +90,7 @@ return $caminho;
 
 
         </table>
-
+        
 
         </main>
 </div>
